@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Empire Steps</title>
+    <style>
+        /* BASE WHITE THEME STYLES WITH CLEAN BLACK ACCENTS */
+        body {
+            background: #ffffff;
+            color: #333333;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        .header1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid #dddddd;
+            box-sizing: border-box;
+        }
+
+        .logo { 
+            height: 110px; 
+            width: auto; 
+            border-radius: 8px; 
+        }
+
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 20px; 
+            align-items: center; 
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a { 
+            text-decoration: none; 
+            color: #333333; 
+            font-weight: 600; 
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover { 
+            color: #000000; 
+        }
+
+        /* SEARCH */
+        .search-container { 
+            display: flex; 
+        }
+
+        #search-input { 
+            padding: 10px; 
+            border: 1px solid #dddddd; 
+            background: #ffffff;
+            color: #333333;
+            border-radius: 6px 0 0 6px; 
+            outline: none; 
+            width: 220px; 
+        }
+
+        .search-container button { 
+            padding: 10px 15px; 
+            border: none; 
+            background: #000000; 
+            color: #ffffff; 
+            font-weight: 700;
+            cursor: pointer; 
+            border-radius: 0 6px 6px 0; 
+            transition: 0.3s;
+        }
+
+        .search-container button:hover { 
+            background: #333333; 
+        }
+
+        /* BANNER */
+        .collection-banner {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 5%;
+        }
+
+        .shop-now-btn {
+            position: absolute;
+            top: 78%;
+            padding: 10px 30px;
+            background: #000000; 
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+            transition: 0.3s;
+        }
+
+        .shop-now-btn:hover {
+            background: #333333;
+        }
+
+        /* CATEGORY FILTER - CENTERED */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 20px 5%;
+            background: #ffffff;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .category-filter button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 25px;
+            background-color: #f9f9f9;
+            color: #333333;
+            border: 1px solid #dddddd;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .category-filter button:hover, .category-filter button.active {
+            background-color: #000000; 
+            color: #ffffff;
+            border-color: #000000;
+            font-weight: 600;
+        }
+
+        /* PRODUCT GRID */
+        #product-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* PRODUCT CARD */
+        .product-card {
+            background: #f9f9f9;
+            border: 1px solid #dddddd;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: left;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 400px;
+            box-sizing: border-box;
+            max-width: 300px;
+            margin: auto;
+            width: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #000000; 
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .product-title {
+            margin: 15px 0 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333333;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 10px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .buy-btn:hover {
+            background: #333;
+        }
+
+        /* MOBILE RESPONSIVE FIX */
+        @media(max-width: 768px){
+            .header1 { 
+                flex-direction: column; 
+                gap: 12px; 
+            }
+            #product-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                padding: 10px;
+            }
+            .product-card {
+                width: 100% !important;
+                min-height: 320px;
+                padding: 8px;
+            }
+            .product-card img {
+                height: 140px;
+                object-fit: contain;
+            }
+            .product-title {
+                font-size: 13px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header1">
+    <a href="index.html"><img src="logo.jpeg" alt="Empire Steps Logo" class="logo"></a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="princess collection.html">Collection</a></li>
+            <li><a href="aamantran contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <a href="add to card.html" class="cart-icon" style="text-decoration:none; color:#333333; font-size:24px; margin-left:15px; position:relative;">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count" style="font-size:14px; background:red; color:white; border-radius:50%; padding:2px 6px;">0</span>
+    </a>
+
+    <div class="search-container">
+        <input type="text" placeholder="Search for shoes..." id="search-input" onkeyup="searchProducts()">
+        <button type="button" onclick="searchProducts()"><i class="fas fa-search"></i></button>
+    </div>
+</header>
+
+<section class="collection-banner">
+    <img src="banner2.jpeg" alt="Collection Banner" style="width: 100%; border-radius: 35px;">
+    <a href="princess collection.html" class="shop-now-btn">Shop Now</a>
+</section>
+
+<div class="category-filter">
+    <button class="active" onclick="filterCategory('all', this)">🛍️ All</button>
+    <button onclick="filterCategory('male', this)">👨 Male</button>
+    <button onclick="filterCategory('female', this)">👩 Female</button>
+    <button onclick="filterCategory('premium', this)">👑 Premium</button>
+</div>
+
+<main class="product-container" id="product-list">
+    <p style="text-align:center; grid-column: 1 / -1;">Loading products from database...</p>
+</main>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+    // --- APNA FIREBASE CONFIG YAHAN PASTE KAREIN ---
+    const firebaseConfig = {
+        apiKey: "APKA_API_KEY_YAHAN_DALO",
+        authDomain: "empire-steps-admin.firebaseapp.com",
+        projectId: "empire-steps-admin",
+        storageBucket: "empire-steps-admin.appspot.com",
+        messagingSenderId: "144163770097",
+        appId: "APKA_APP_ID_YAHAN_DALO"
+    };
+
+    let allProducts = [];
+    let currentCategory = 'all';
+
+    try {
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function loadProducts() {
+            let container = document.getElementById('product-list');
+            if (!container) return;
+            
+            container.innerHTML = "<p style='text-align:center; grid-column: 1 / -1;'>Loading products from database...</p>";
+            
+            try {
+                let querySnapshot = await getDocs(collection(db, "products"));
+                
+                if (querySnapshot.empty) {
+                    container.innerHTML = "<p style='text-align:center; grid-column: 1 / -1;'>Abhi koi product available nahi hai. Admin panel se add karein!</p>";
+                    return;
+                }
+                
+                allProducts = [];
+                querySnapshot.forEach((doc) => {
+                    allProducts.push({ id: doc.id, ...doc.data() });
+                });
+                
+                displayProducts(allProducts);
+            } catch(err) {
+                console.error("Firestore getData error:", err);
+                container.innerHTML = "<p style='text-align:center; color:red; grid-column: 1 / -1;'>Database se data fetch karne mein error aaya.</p>";
+            }
+        }
+
+        window.displayProducts = function(products) {
+            let container = document.getElementById('product-list');
+            if (!container) return;
+
+            if (products.length === 0) {
+                container.innerHTML = "<p style='text-align:center; grid-column: 1 / -1;'>Koi product nahi mila!</p>";
+                return;
+            }
+
+            container.innerHTML = "";
+            products.forEach((p) => {
+                let imgSrc = p.image ? p.image : "https://images.unsplash.com/photo-1542291026-7eec264c27ff";
+                
+                container.innerHTML += `
+                    <div class="product-card" data-category="${p.category || 'male'}">
+                        <img src="${imgSrc}" alt="${p.name}">
+                        <h3 class="product-title">${p.name}</h3>
+                        <div style="margin-bottom: 10px;">
+                            <span style="font-weight: 700; font-size: 16px;">₹${p.price}</span>
+                            ${p.originalPrice ? `<span style="text-decoration: line-through; color: #888; font-size: 13px; margin-left: 8px;">₹${p.originalPrice}</span>` : ''}
+                        </div>
+                        <button class="buy-btn" onclick="window.location.href='product-details.html?id=${p.id}'">View Product</button>
+                    </div>
+                `;
+            });
+        }
+
+        window.filterCategory = function(category, btn) {
+            currentCategory = category;
+            document.querySelectorAll('.category-filter button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            let searchVal = document.getElementById('search-input').value.toLowerCase();
+            applyFilters(searchVal);
+        }
+
+        window.searchProducts = function() {
+            let searchVal = document.getElementById('search-input').value.toLowerCase();
+            applyFilters(searchVal);
+        }
+
+        function applyFilters(searchVal) {
+            let filtered = allProducts.filter(p => {
+                let matchesCategory = (currentCategory === 'all') || (p.category && p.category.toLowerCase() === currentCategory.toLowerCase());
+                let matchesSearch = p.name && p.name.toLowerCase().includes(searchVal);
+                return matchesCategory && matchesSearch;
+            });
+            displayProducts(filtered);
+        }
+
+        window.addEventListener('DOMContentLoaded', loadProducts);
+    } catch (e) {
+        console.error("Firebase Initialization Error:", e);
+    }
+</script>
+
+<footer style="background: #f9f9f9; color: #333333; padding: 40px 20px 20px 20px; font-family: sans-serif; margin-top: 50px; border-top: 3px solid #000000;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px;">
+        
+        <div>
+            <h3 style="font-family: 'Times New Roman', serif; font-size: 20px; color: #000000; margin-bottom: 15px; letter-spacing: 1px;">EMPIRE STEPS</h3>
+            <p style="font-size: 13px; color: #666666; line-height: 1.6;">Your ultimate destination for premium footwear in Vadodara. Walk with confidence, step in style.</p>
+        </div>
+
+        <div>
+            <h4 style="font-size: 15px; color: #333333; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Quick Links</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; line-height: 2;">
+                <li><a href="index.html" style="color: #666666; text-decoration: none;">Home</a></li>
+                <li><a href="princess collection.html" style="color: #666666; text-decoration: none;">Collection</a></li>
+                <li><a href="aamantran contact.html" style="color: #666666; text-decoration: none;">Contact Us</a></li>
+                <li><a href="add to card.html" style="color: #666666; text-decoration: none;">My Cart</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 style="font-size: 15px; color: #333333; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Visit Store</h4>
+            <p style="font-size: 13px; color: #666666; margin-bottom: 8px;"><i class="fas fa-map-marker-alt" style="color: #000000; margin-right: 8px;"></i> Vadodara, Gujarat Raopura Rd mandvi</p>
+            <p style="font-size: 13px; color: #666666; margin-bottom: 8px;">
+                <i class="fas fa-map" style="color: #000000; margin-right: 8px;"></i> 
+                <a href="https://maps.app.goo.gl/JoiYaVS1j8K4eWRRA?g_st=ac" target="_blank" style="color: #666666; text-decoration: underline;">Location</a>
+            </p>
+            <p style="font-size: 13px; color: #666666; margin-bottom: 8px;"><i class="fas fa-phone" style="color: #000000; margin-right: 8px;"></i> +91 98980 26532</p>
+            <p style="font-size: 13px; color: #666666; margin-bottom: 8px;"><i class="fas fa-phone" style="color: #000000; margin-right: 8px;"></i> +91 90168 83896</p>
+            <p style="font-size: 13px; color: #666666;"><i class="fas fa-envelope" style="color: #000000; margin-right: 8px;"></i> support@empiresteps.in</p>
+        </div>
+
+    </div>
+
+    <div style="border-top: 1px solid #dddddd; padding-top: 20px; text-align: center; font-size: 12px; color: #666666;">
+        <p>© 2026 Empire Steps. All Rights Reserved. Crafted for Excellence.</p>
+    </div>
+</footer>
+</body>
+</html>
